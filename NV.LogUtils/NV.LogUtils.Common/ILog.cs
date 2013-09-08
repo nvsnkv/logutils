@@ -2,7 +2,7 @@
 {
     public interface ILog
     {
-        string ReadLine();
+        string ReadLine ( );
         int LinesReaded { get; }
         int? LinesCount { get; }
     }

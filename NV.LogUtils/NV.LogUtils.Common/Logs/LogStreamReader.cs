@@ -5,10 +5,15 @@ namespace NV.LogUtils.Common.Logs
 {
     public class LogStreamReader : StreamReader, ILog
     {
-        public LogStreamReader(string path)
-            :base(path)
+        public LogStreamReader ( Stream stream )
+            : base(stream)
         {
             LinesReaded = 0;
+        }
+
+        public LogStreamReader ( string path )
+            : this(new FileStream(path, FileMode.Open, FileAccess.Read))
+        {
         }
 
         public override string ReadLine ( )

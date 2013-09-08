@@ -4,6 +4,6 @@ namespace NV.LogUtils.Common
 {
     public interface IAnalyzer
     {
-        IReport Analyze(IList<IEntry> entries);
+        IReport Analyze ( IList<IEntry> entries );
     }
 }

@@ -4,6 +4,6 @@ namespace NV.LogUtils.Common
 {
     public interface IProcessor
     {
-        IList<IEntry> GetEntries(ILog log);
+        IList<IEntry> GetEntries ( ILog log );
     }
 }
