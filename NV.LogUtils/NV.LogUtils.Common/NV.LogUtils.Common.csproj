@@ -39,14 +39,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Analyzers\SimpleAnalyzer.cs" />
     <Compile Include="IAnalyzer.cs" />
     <Compile Include="IEntry.cs" />
     <Compile Include="ILog.cs" />
     <Compile Include="IProcessor.cs" />
     <Compile Include="IReport.cs" />
     <Compile Include="IReporter.cs" />
-    <Compile Include="Logs\TextLogFile.cs" />
+    <Compile Include="Logs\LogStreamReader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Reporters\SimpleReporter.cs" />
+    <Compile Include="Reports\SimpleReport.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -4,7 +4,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>27d7e80d-ce85-4d4b-b6a1-4790c1d019b6</ProjectGuid>
+    <ProjectGuid>{5773ABDB-E5BF-4D99-A8F8-C417527E695B}</ProjectGuid>
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NV.LogUtils.MSBuild.WarningsCounter</RootNamespace>
@@ -43,6 +43,16 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\NV.LogUtils.Common\NV.LogUtils.Common.csproj">
+      <Project>{1f6d5a97-74cf-4bf9-96da-fd8107e6f456}</Project>
+      <Name>NV.LogUtils.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\NV.LogUtils.MSBuild\NV.LogUtils.MSBuild.csproj">
+      <Project>{fbd8d6e6-2c1d-475a-8b41-4591bbcbfb11}</Project>
+      <Name>NV.LogUtils.MSBuild</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

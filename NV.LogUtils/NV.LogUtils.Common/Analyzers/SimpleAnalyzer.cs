@@ -3,7 +3,7 @@ using NV.LogUtils.Common.Reports;
 
 namespace NV.LogUtils.Common.Analyzers
 {
-    public class Analyzer : IAnalyzer
+    public class SimpleAnalyzer : IAnalyzer
     {
         public IReport Analyze ( IList<IEntry> entries )
         {

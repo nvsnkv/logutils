@@ -3,6 +3,12 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NV.LogUtils.Common", "NV.LogUtils.Common\NV.LogUtils.Common.csproj", "{1F6D5A97-74CF-4BF9-96DA-FD8107E6F456}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MSBuild", "MSBuild", "{067CA14A-1930-4897-B26C-21793C0C236B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NV.LogUtils.MSBuild", "MSBuild\NV.LogUtils.MSBuild\NV.LogUtils.MSBuild.csproj", "{FBD8D6E6-2C1D-475A-8B41-4591BBCBFB11}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NV.LogUtils.MSBuild.WarningsCounter", "MSBuild\NV.LogUtils.MSBuild.WarningsCounter\NV.LogUtils.MSBuild.WarningsCounter.csproj", "{5773ABDB-E5BF-4D99-A8F8-C417527E695B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -13,8 +19,20 @@ Global
 		{1F6D5A97-74CF-4BF9-96DA-FD8107E6F456}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1F6D5A97-74CF-4BF9-96DA-FD8107E6F456}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1F6D5A97-74CF-4BF9-96DA-FD8107E6F456}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FBD8D6E6-2C1D-475A-8B41-4591BBCBFB11}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FBD8D6E6-2C1D-475A-8B41-4591BBCBFB11}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FBD8D6E6-2C1D-475A-8B41-4591BBCBFB11}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FBD8D6E6-2C1D-475A-8B41-4591BBCBFB11}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5773ABDB-E5BF-4D99-A8F8-C417527E695B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5773ABDB-E5BF-4D99-A8F8-C417527E695B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5773ABDB-E5BF-4D99-A8F8-C417527E695B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5773ABDB-E5BF-4D99-A8F8-C417527E695B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{FBD8D6E6-2C1D-475A-8B41-4591BBCBFB11} = {067CA14A-1930-4897-B26C-21793C0C236B}
+		{5773ABDB-E5BF-4D99-A8F8-C417527E695B} = {067CA14A-1930-4897-B26C-21793C0C236B}
 	EndGlobalSection
 EndGlobal

@@ -7,3 +7,9 @@
 /NV.LogUtils/MSBuild/NV.LogUtils.MSBuild.WarningsCounter/obj
 
 /NV.LogUtils/MSBuild/NV.LogUtils.MSBuild/obj
+
+/NV.LogUtils/MSBuild/NV.LogUtils.MSBuild.WarningsCounter/bin
+
+/NV.LogUtils/MSBuild/NV.LogUtils.MSBuild/bin
+
+/NV.LogUtils/NV.LogUtils.Common/bin

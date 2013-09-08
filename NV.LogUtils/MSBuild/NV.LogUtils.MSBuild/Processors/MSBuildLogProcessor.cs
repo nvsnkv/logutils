@@ -1,7 +1,8 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using NV.LogUtils.Common;
+using NV.LogUtils.MSBuild.Entries;
 
-namespace NV.LogUtils.MSBuild.Entries
+namespace NV.LogUtils.MSBuild.Processors
 {
     public class MSBuildLogProcessor:IProcessor
     {
