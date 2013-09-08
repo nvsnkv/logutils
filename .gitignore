@@ -14,3 +14,8 @@
 
 /NV.LogUtils/NV.LogUtils.Common/bin
 /NV.LogUtils/MSBuild/NV.LogUtils.MSBuild.WarningsCounter/*.user
+/bin/Common/*.pdb
+/bin/MSBuild/*.pdb
+/bin/*.pdb
+/bin/WarnCounter.vshost.exe
+/bin/WarnCounter.vshost.exe.config
