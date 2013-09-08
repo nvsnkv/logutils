@@ -8,7 +8,7 @@
     <OutputType>Exe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>NV.LogUtils.MSBuild.WarningsCounter</RootNamespace>
-    <AssemblyName>WarnCount</AssemblyName>
+    <AssemblyName>WarnCounter</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
