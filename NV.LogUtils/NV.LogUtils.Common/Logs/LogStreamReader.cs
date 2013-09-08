@@ -24,5 +24,6 @@ namespace NV.LogUtils.Common.Logs
 
         public int LinesReaded { get; private set; }
         public int? LinesCount { get { return null; } }
+        public bool EndOfLog { get { return EndOfStream; } }
     }
 }

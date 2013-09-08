@@ -1,5 +1,9 @@
 /NV.LogUtils/_ReSharper.NV.LogUtils
 
-/NV.LogUtils/NV.LogUtils.Common/obj/Debug
+/NV.LogUtils/NV.LogUtils.Common/obj
 
 /NV.LogUtils/NV.LogUtils.v11.suo
+
+/NV.LogUtils/MSBuild/NV.LogUtils.MSBuild.WarningsCounter/obj
+
+/NV.LogUtils/MSBuild/NV.LogUtils.MSBuild/obj

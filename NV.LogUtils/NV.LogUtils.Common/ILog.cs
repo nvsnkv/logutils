@@ -5,5 +5,7 @@
         string ReadLine ( );
         int LinesReaded { get; }
         int? LinesCount { get; }
+
+        bool EndOfLog { get; }
     }
 }
