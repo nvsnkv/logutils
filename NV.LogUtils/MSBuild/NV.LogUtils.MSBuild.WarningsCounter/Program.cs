@@ -67,11 +67,28 @@ namespace NV.LogUtils.MSBuild.WarningsCounter
             _analyzer = new SimpleAnalyzer();
 
             if (args.Contains("/csv"))
-                _reporter = new CSVReporter();
+            {
+                SetupCSVReporter(args);
+            }
             else
                 _reporter = new SimpleReporter();
 
             _logFile = args.FirstOrDefault(File.Exists);
+        }
+
+        private static void SetupCSVReporter(IEnumerable<string> args)
+        {
+            var reporter = new CSVReporter();
+            var delimeter = args.FirstOrDefault(x => x.StartsWith("/csv-field-separator:"));
+            
+            if (!string.IsNullOrEmpty(delimeter))
+            {
+                if (delimeter.Length <= "/csv-field-separator:".Length)
+                    throw new ArgumentException("Empty csv row separator specified!");
+
+                reporter.FieldSeparator = delimeter.Substring("/csv-field-separator:".Length);
+            }
+            _reporter = reporter;
         }
 
         private static void PrintException ( Exception exception, int depth = 0 )

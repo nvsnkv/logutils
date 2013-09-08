@@ -7,21 +7,26 @@ namespace NV.LogUtils.MSBuild.Reporters
 {
     public class CSVReporter : IReporter
     {
+        public CSVReporter ( )
+        {
+            FieldSeparator = ",";
+        }
+
         public string PrintReport ( IReport report )
         {
             var sorted = report.Entries.ToList();
             sorted.Sort(( x, y ) => -1 * (x.Value - y.Value));
 
-            string output = "File, Line, Warning, Message, Count\r\n";
+            var output = "File" + FieldSeparator + "Line" + FieldSeparator + "Warning" + FieldSeparator + "Message"+ FieldSeparator + "Count\r\n";
             foreach (var pair in sorted)
             {
                 var warning = pair.Key as MSBuildWarning;
                 if (warning != null)
                 {
-                    output += Escape(warning.File) + ',';
-                    output += Escape(warning.Line.ToString(CultureInfo.InvariantCulture)) + ',';
-                    output += Escape(warning.Warning) + ',';
-                    output += Escape(warning.Message) + ',';
+                    output += Escape(warning.File) + FieldSeparator;
+                    output += Escape(warning.Line.ToString(CultureInfo.InvariantCulture)) + FieldSeparator;
+                    output += Escape(warning.Warning) + FieldSeparator;
+                    output += Escape(warning.Message) + FieldSeparator;
                     output += pair.Value + "\r\n";
                 }
             }
@@ -37,5 +42,7 @@ namespace NV.LogUtils.MSBuild.Reporters
                        : text;
 
         }
+
+        public string FieldSeparator { get; set; }
     }
 }
