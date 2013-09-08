@@ -43,6 +43,7 @@
     <Compile Include="Processors\MSBuildLogProcessor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Reporters\CSVReporter.cs" />
+    <Compile Include="Reporters\TeamCityReporter.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\NV.LogUtils.Common\NV.LogUtils.Common.csproj">

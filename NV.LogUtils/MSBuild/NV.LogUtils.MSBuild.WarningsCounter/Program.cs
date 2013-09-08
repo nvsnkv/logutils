@@ -70,8 +70,14 @@ namespace NV.LogUtils.MSBuild.WarningsCounter
             {
                 SetupCSVReporter(args);
             }
+            else if(args.Contains("/tc"))
+            {
+                _reporter = new TeamCityReporter();
+            }
             else
+            {
                 _reporter = new SimpleReporter();
+            }
 
             _logFile = args.FirstOrDefault(File.Exists);
         }
