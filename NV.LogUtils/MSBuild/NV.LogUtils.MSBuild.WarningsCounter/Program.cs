@@ -8,15 +8,17 @@ using NV.LogUtils.Common.Analyzers;
 using NV.LogUtils.Common.Logs;
 using NV.LogUtils.Common.Reporters;
 using NV.LogUtils.MSBuild.Processors;
+using NV.LogUtils.MSBuild.Reporters;
 
 namespace NV.LogUtils.MSBuild.WarningsCounter
 {
     class Program
     {
-        private static MSBuildLogProcessor _processor;
-        private static SimpleAnalyzer _analyzer;
-        private static SimpleReporter _reporter;
+        private static IProcessor _processor;
+        private static IAnalyzer _analyzer;
+        private static IReporter _reporter;
         private static string _logFile;
+        private static bool _waitKeyPressed;
 
         public const decimal MaxExpceptionDepth = 3;
 
@@ -27,43 +29,52 @@ namespace NV.LogUtils.MSBuild.WarningsCounter
                 Setup(args);
                 Validate();
 
-                IList<IEntry> rawEntries;
+                IList<IEntry> entries;
 
                 using (var log = new LogStreamReader(_logFile))
                 {
-                    rawEntries = _processor.GetEntries(log);
+                    entries = _processor.GetEntries(log);
                 }
 
-                var report = _analyzer.Analyze(rawEntries);
+                var report = _analyzer.Analyze(entries);
                 Console.WriteLine(_reporter.PrintReport(report));
-            }
-            catch (Exception e)
+            } catch (Exception e)
             {
                 PrintException(e);
             }
 
-#if DEBUG
-            Console.WriteLine("Press any key to exit...");
-            Console.ReadKey();
-#endif
+
+            if (_waitKeyPressed)
+            {
+                Console.WriteLine("Press any key to exit...");
+                Console.ReadKey();
+            }
+
+
         }
 
-        private static void Validate()
+        private static void Validate ( )
         {
             if (string.IsNullOrEmpty(_logFile))
                 throw new ArgumentException("No input file specified!");
         }
 
-        private static void Setup(string[] args)
+        private static void Setup ( string[] args )
         {
+            _waitKeyPressed = args.Any(x => (x == "/i") || (x == "/interactive"));
+
             _processor = new MSBuildLogProcessor();
             _analyzer = new SimpleAnalyzer();
-            _reporter = new SimpleReporter();
+
+            if (args.Contains("/csv"))
+                _reporter = new CSVReporter();
+            else
+                _reporter = new SimpleReporter();
 
             _logFile = args.FirstOrDefault(File.Exists);
         }
 
-        private static void PrintException(Exception exception, int depth = 0)
+        private static void PrintException ( Exception exception, int depth = 0 )
         {
             if (depth == 0)
             {

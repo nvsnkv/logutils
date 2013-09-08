@@ -13,3 +13,4 @@
 /NV.LogUtils/MSBuild/NV.LogUtils.MSBuild/bin
 
 /NV.LogUtils/NV.LogUtils.Common/bin
+/NV.LogUtils/MSBuild/NV.LogUtils.MSBuild.WarningsCounter/*.user
