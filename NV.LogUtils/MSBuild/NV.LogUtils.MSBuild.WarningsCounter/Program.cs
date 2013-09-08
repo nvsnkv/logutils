@@ -21,6 +21,7 @@ namespace NV.LogUtils.MSBuild.WarningsCounter
         private static string _logFile;
         private static bool _waitKeyPressed;
         private static bool _install;
+        private static bool _help;
 
         public const decimal MaxExpceptionDepth = 3;
 
@@ -29,8 +30,11 @@ namespace NV.LogUtils.MSBuild.WarningsCounter
             try
             {
                 Setup(args);
-
-                if (_install)
+                if (_help)
+                {
+                    PrintHelp();
+                }
+                else if (_install)
                 {
                     Install();
                 }
@@ -63,6 +67,19 @@ namespace NV.LogUtils.MSBuild.WarningsCounter
 
         }
 
+        private static void PrintHelp()
+        {
+            Console.WriteLine(@"WarnCounter - log file analyzer, that counts warnings and displays it in output");
+            Console.WriteLine(@"usage: WarnCounter [/help /install] log [/i /tc /csv /csv-field-separator:%sep%]");
+            Console.WriteLine(@"arguments: log - a path to existing log file");
+            Console.WriteLine(@"flags: /help - print this message and quit;");
+            Console.WriteLine(@"       /install - create %WarnCounterPath% environement variable and quit;");
+            Console.WriteLine(@"       /i - interactive mode. Wait keypress before exit;");
+            Console.WriteLine(@"       /tc - ""TeamCity output"" - print results in teamcity-compatible style;");
+            Console.WriteLine(@"       /csv - print results  in csv notation. Useful when redirecting output;");
+            Console.WriteLine(@"       /csv-field-separator: - set custom field separator for csv.");
+        }
+
         private static void Install()
         {
             var assembly = Assembly.GetExecutingAssembly();
@@ -76,12 +93,16 @@ namespace NV.LogUtils.MSBuild.WarningsCounter
 
         private static void Validate ( )
         {
-            if (!_install && string.IsNullOrEmpty(_logFile))
+            if (_help || _install)
+                return;
+            
+            if (string.IsNullOrEmpty(_logFile))
                 throw new ArgumentException("No input file specified!");
         }
 
         private static void Setup ( string[] args )
         {
+            _help = args.Any(x => (x == "/help") || (x == "/h"));
             _install = args.Any(x => x == "/install");
             _waitKeyPressed = args.Any(x => (x == "/i") || (x == "/interactive"));
 
@@ -102,6 +123,11 @@ namespace NV.LogUtils.MSBuild.WarningsCounter
             }
 
             _logFile = args.FirstOrDefault(File.Exists);
+
+            if (args.Length == 0)
+            {
+                _help = _waitKeyPressed = true;
+            }
         }
 
         private static void SetupCSVReporter(IEnumerable<string> args)
